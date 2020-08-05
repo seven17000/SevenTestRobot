@@ -1,13 +1,10 @@
 package app
 
 import (
-	"SevenTestRobort/config"
-	"SevenTestRobort/robotsrv/robot"
 	"net/http"
-)
-
-var (
-	RobotConf config.RobotConfig
+	"seventestrobot/config"
+	"seventestrobot/data"
+	"seventestrobot/robotsrv/robot"
 )
 
 func Run(w http.ResponseWriter, r *http.Request) {
@@ -21,4 +18,8 @@ func Run(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		return
 	}
+
+	robotStat := data.GetGlobalStat()
+	data.InitStat(robotStat)
+
 }
